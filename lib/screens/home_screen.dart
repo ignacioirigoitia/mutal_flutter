@@ -50,11 +50,11 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('Mapa'),
       ),
-      body:  ListView(
+      body:  Column(
         children: [
           if(lng != null && lat != null)
             SizedBox(
-              height: size.height - 70,
+              height: size.height - 80,
               child: GoogleMap(
                 markers: markers,
                 mapType: MapType.normal,
