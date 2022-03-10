@@ -3,6 +3,7 @@ import 'package:mutual_project/colors/mutual_colors.dart';
 import 'package:mutual_project/providers/login_form_provider.dart';
 import 'package:mutual_project/screens/home_screen.dart';
 import 'package:mutual_project/screens/login_screen.dart';
+import 'package:mutual_project/screens/options_screen.dart';
 import 'package:mutual_project/screens/register_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Mutual app',
-      initialRoute: 'home',
+      initialRoute: 'options',
       theme: ThemeData(
         scaffoldBackgroundColor: backgroundColor,
       ),
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         'login': (_) => const LoginScreen(),
         'home': (_) => const HomeScreen(),
         'register': (_) => const RegisterScreen(),
+        'options': (_) => OptionsScreen(),
       },
     );
   }
