@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         'login': (_) => const LoginScreen(),
         'home': (_) => const HomeScreen(),
         'register': (_) => const RegisterScreen(),
-        'options': (_) => OptionsScreen(),
+        'options': (_) => const OptionsScreen(),
       },
     );
   }

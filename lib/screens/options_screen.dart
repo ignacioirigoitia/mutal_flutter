@@ -1,11 +1,11 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:csc_picker/csc_picker.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class OptionsScreen extends StatefulWidget {
+  const OptionsScreen({Key? key}) : super(key: key);
+
   @override
   State<OptionsScreen> createState() => _OptionsScreenState();
 }
@@ -18,15 +18,15 @@ class _OptionsScreenState extends State<OptionsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey<CSCPickerState> _cscPickerKey = GlobalKey();
+    // GlobalKey<CSCPickerState> _cscPickerKey = GlobalKey();
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Buscar ciudad'),
+        title: const Text('Buscar ciudad'),
       ),
       body: Center(
         child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             height: 600,
             child: Column(
               children: [
@@ -43,14 +43,14 @@ class _OptionsScreenState extends State<OptionsScreen> {
 
                   ///Dropdown box decoration to style your dropdown selector [OPTIONAL PARAMETER] (USE with disabledDropdownDecoration)
                   dropdownDecoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
                       color: Colors.white,
                       border:
                           Border.all(color: Colors.grey.shade300, width: 1)),
 
                   ///Disabled Dropdown box decoration to style your dropdown selector [OPTIONAL PARAMETER]  (USE with disabled dropdownDecoration)
                   disabledDropdownDecoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
                       color: Colors.grey.shade300,
                       border:
                           Border.all(color: Colors.grey.shade300, width: 1)),
@@ -72,19 +72,19 @@ class _OptionsScreenState extends State<OptionsScreen> {
                   //disableCountry: true,
 
                   ///selected item style [OPTIONAL PARAMETER]
-                  selectedItemStyle: TextStyle(
+                  selectedItemStyle: const TextStyle(
                     color: Colors.black,
                     fontSize: 14,
                   ),
 
                   ///DropdownDialog Heading style [OPTIONAL PARAMETER]
-                  dropdownHeadingStyle: TextStyle(
+                  dropdownHeadingStyle: const TextStyle(
                       color: Colors.black,
                       fontSize: 17,
                       fontWeight: FontWeight.bold),
 
                   ///DropdownDialog Item style [OPTIONAL PARAMETER]
-                  dropdownItemStyle: TextStyle(
+                  dropdownItemStyle: const TextStyle(
                     color: Colors.black,
                     fontSize: 14,
                   ),
@@ -124,18 +124,22 @@ class _OptionsScreenState extends State<OptionsScreen> {
                 TextButton(
                     onPressed: () {
                       setState(() {
-                        address = "$countryValue, $stateValue, $cityValue";
+                        if(cityValue != null){
+                          address = "$countryValue, $stateValue, $cityValue";
+                        } else {
+                          address = "$countryValue, $stateValue";
+                        }
                       });
                     },
-                    child: Text("Print Data")),
+                    child: const Text("Print Data")),
                 Text(address),
                 TextButton(
                     onPressed: () async {
                       final argumento = await calcularLatLng(address);
-                      Navigator.pushNamed(context, 'home',
+                      Navigator.pushReplacementNamed(context, 'home',
                           arguments: argumento);
                     },
-                    child: Text('Localizar')),
+                    child: const Text('Localizar')),
               ],
             )),
       ),

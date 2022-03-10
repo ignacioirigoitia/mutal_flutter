@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,15 +14,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
     final LatLng address = ModalRoute.of(context)!.settings.arguments as LatLng;
-
     // Marcadores
-    Set<Marker> markers = Set<Marker>();
-    markers.add(const Marker(
-      markerId: MarkerId('my-location'),
-      position: LatLng(0.0, 0.0),
+    Set<Marker> markers = <Marker>{};
+    markers.add(Marker(
+      markerId: const MarkerId('my-location'),
+      position: address,
     ));
 
     return Scaffold(
@@ -34,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: GoogleMap(
         markers: markers,
         mapType: MapType.normal,
-        initialCameraPosition: CameraPosition(target: address, zoom: 20),
+        initialCameraPosition: CameraPosition(target: address, zoom: 16),
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
