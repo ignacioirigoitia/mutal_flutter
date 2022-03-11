@@ -39,7 +39,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
                   showCities: true,
 
                   ///Enable (get flag with country name) / Disable (Disable flag) / ShowInDropdownOnly (display flag in dropdown only) [OPTIONAL PARAMETER]
-                  flagState: CountryFlag.DISABLE,
+                  flagState: CountryFlag.ENABLE,
 
                   ///Dropdown box decoration to style your dropdown selector [OPTIONAL PARAMETER] (USE with disabledDropdownDecoration)
                   dropdownDecoration: BoxDecoration(
@@ -56,14 +56,14 @@ class _OptionsScreenState extends State<OptionsScreen> {
                           Border.all(color: Colors.grey.shade300, width: 1)),
 
                   ///placeholders for dropdown search field
-                  countrySearchPlaceholder: "Country",
-                  stateSearchPlaceholder: "State",
-                  citySearchPlaceholder: "City",
+                  countrySearchPlaceholder: "País",
+                  stateSearchPlaceholder: "Provincia",
+                  citySearchPlaceholder: "Ciudad",
 
                   ///labels for dropdown
-                  countryDropdownLabel: "*Country",
-                  stateDropdownLabel: "*State",
-                  cityDropdownLabel: "*City",
+                  countryDropdownLabel: "*País",
+                  stateDropdownLabel: "*Provincia",
+                  cityDropdownLabel: "*Ciudad",
 
                   ///Default Country
                   //defaultCountry: DefaultCountry.India,
@@ -124,7 +124,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
                 TextButton(
                     onPressed: () {
                       setState(() {
-                        if(cityValue != null){
+                        if (cityValue != null) {
                           address = "$countryValue, $stateValue, $cityValue";
                         } else {
                           address = "$countryValue, $stateValue";
